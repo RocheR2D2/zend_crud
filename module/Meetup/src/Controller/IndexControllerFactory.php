@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Meetup\Controller;
 
@@ -11,7 +10,13 @@ use Psr\Container\ContainerInterface;
 
 final class IndexControllerFactory
 {
-    public function __invoke(ContainerInterface $container) : IndexController
+    /**
+     * @param ContainerInterface $container
+     * @return IndexController
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    public function __invoke(ContainerInterface $container)
     {
         $meetupRepository = $container->get(EntityManager::class)->getRepository(Meetup::class);
         //$filmForm = $container->get(FilmForm::class);
