@@ -9,7 +9,9 @@ namespace Meetup;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
+use Meetup\Controller;
 use Zend\ServiceManager\Factory\InvokableFactory;
+
 
 return [
     'router' => [
@@ -58,7 +60,13 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+              Controller\IndexController::class => Controller\IndexControllerFactory::class,
+        ],
+    ],
+
+    'service_manager' => [
+        'factories' => [
+            //FilmForm::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

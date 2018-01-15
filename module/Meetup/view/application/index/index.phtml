@@ -1,1 +1,7 @@
 <h1>Meetup Lists</h1>
+
+<ul>
+    <?php foreach ($this->meetups as $meetup): /* @var $meetup \Meetup\Entity\Meetup */ ?>
+    <li><?= $meetup->getTitle() ?></li>
+    <?php endforeach; ?>
+</ul>

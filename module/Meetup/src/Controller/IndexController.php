@@ -7,14 +7,34 @@
 
 namespace Meetup\Controller;
 
+
+use Meetup\Entity\Meetup;
+use Meetup\Repository\MeetupRepository;
+//use Cinema\Form\FilmForm;
+use Zend\Http\PhpEnvironment\Request;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    /**
+     * @var MeetupRepository
+     */
+    private $meetupRepository;
+
+    public function __construct(MeetupRepository $meetupRepository)
+    {
+        $this->meetupRepository = $meetupRepository;
+        
+    }
+
+
     public function indexAction()
     {
-        return new ViewModel();
+        //var_dump($this->meetupRepository->findAll());
+        return new ViewModel([
+            'meetups' => $this->meetupRepository->findAll(),
+        ]);
     }
 
     public function addAction()
