@@ -9,8 +9,8 @@ namespace Meetup\Controller;
 
 
 use Meetup\Entity\Meetup;
+use Meetup\Form\MeetupForm;
 use Meetup\Repository\MeetupRepository;
-//use Cinema\Form\FilmForm;
 use Zend\Http\PhpEnvironment\Request;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -22,16 +22,21 @@ class IndexController extends AbstractActionController
      */
     private $meetupRepository;
 
-    public function __construct(MeetupRepository $meetupRepository)
+    /**
+     * @var MeetupForm
+     */
+    private $meetupForm;
+
+    public function __construct(MeetupRepository $meetupRepository, MeetupForm $meetupForm)
     {
         $this->meetupRepository = $meetupRepository;
-        
+        $this->meetupForm = $meetupForm;
     }
 
 
     public function indexAction()
     {
-        //var_dump($this->meetupRepository->findAll());
+
         return new ViewModel([
             'meetups' => $this->meetupRepository->findAll(),
         ]);
@@ -39,16 +44,43 @@ class IndexController extends AbstractActionController
 
     public function addAction()
     {
-        return new ViewModel();
+        $form = $this->meetupForm;
+        /* @var $request Request */
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                $meetup = $this->meetupRepository->createMeetupFromNameDescription(
+                    $form->getData()['title'],
+                    $form->getData()['description'],
+                    date_create_from_format('Y-m-d', $form->getData()['startTime']),
+                    date_create_from_format('Y-m-d', $form->getData()['endTime'])
+                );
+                $this->meetupRepository->add($meetup);
+                return $this->redirect()->toRoute('meetups');
+            }
+        }
+        $form->prepare();
+        return new ViewModel([
+            'form' => $form,
+        ]);
     }
 
     public function updateAction()
     {
+
+
         return new ViewModel();
     }
 
     public function deleteAction()
     {
-        return new ViewModel();
+
+        $id = $this->params()->fromRoute('id', '-1');
+        $meetup = $this->meetupRepository->find($id);
+
+        $this->meetupRepository->delete($meetup);
+
+        return $this->redirect()->toRoute('meetups');
     }
 }

@@ -1,7 +1,57 @@
-<h1>Meetup Lists</h1>
+    <div class="row">
+        <h1>Meetup Lists</h1>
+        <a href="<?= $this->url('meetups/add'); ?>" class="btn btn-primary">Add new</a>
+    </div>
 
-<ul>
-    <?php foreach ($this->meetups as $meetup): /* @var $meetup \Meetup\Entity\Meetup */ ?>
-    <li><?= $meetup->getTitle() ?></li>
-    <?php endforeach; ?>
-</ul>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th><th>Titre</th><th>Description</th><th>Start Time</th><th>End Time</th><th>Edit</th><th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->meetups as $meetup): /* @var $meetup \Meetup\Entity\Meetup */ ?>
+
+                <?php $id = $meetup->getId(); ?>
+
+                <tr>
+                    <td><?= $id ?></td>
+                    <td><?= $meetup->getTitle() ?></td>
+                    <td><?= $meetup->getDescription() ?></td>
+                    <?php
+
+                    ?>
+                    <td><a type="button" class="btn btn-warning">Edit</a></td>
+
+
+                    <td><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $id ?>">Delete</a></td>
+                    <div class="modal fade" id="<?= $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Event <?= $meetup->getTitle() ?></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    You will delete finally this meetup, are you sure ?
+                                </div>
+                                <div class="modal-footer">
+                                    <?php
+                                    $url = $this->url('meetups/delete');
+                                    $url = $url.'/'.$id;
+                                    ?>
+                                    <a href="<?= $url ?>" type="button" class="btn btn-danger">Delete</a>
+                                    <a href="#" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+

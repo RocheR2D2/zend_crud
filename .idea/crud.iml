@@ -23,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-authentication" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-component-installer" />
@@ -33,6 +34,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-form" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-http" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-i18n" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-inputfilter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-loader" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-modulemanager" />
@@ -69,6 +71,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/symfony/debug" />
           <root url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-authentication" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-cache" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-component-installer" />
@@ -79,6 +82,7 @@
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-form" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-http" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-i18n" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-inputfilter" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-loader" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-modulemanager" />
@@ -111,6 +115,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/symfony/debug" />
           <root url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-authentication" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-cache" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-component-installer" />
@@ -121,6 +126,7 @@
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-form" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-http" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-i18n" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-inputfilter" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-loader" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-modulemanager" />

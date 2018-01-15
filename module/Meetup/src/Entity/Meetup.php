@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Meetup\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * Class Film
@@ -35,34 +36,35 @@ class Meetup
     private $description = '';
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $startTime;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $endTime;
 
 
     
-    public function __construct(string $title, string $description = '', $startTime, $endTime)
+    public function __construct(string $title, string $description = '', DateTime $startTime, DateTime $endTime)
     {
-        if($this->startTime < $this->endTime) {
+
             $this->title = $title;
             $this->description = $description;
             $this->startTime = $startTime;
-            $this->endTime = $endTime;    
-        }
+            $this->endTime = $endTime;
+
         
     }
-
     /**
+     * Get id
+     *
      * @return integer
      */
-    public function getId() : integer
+    public function getId()
     {
-        return $this->title;
+        return $this->id;
     }
 
     /**
@@ -88,24 +90,52 @@ class Meetup
         $this->description = $description;
     }
 
-    public function getStartTime() : datetime
+    /**
+     * Set startTime
+     *
+     * @param \DateTime $startTime
+     *
+     * @return Meetup
+     */
+    public function setStartTime($startTime)
+    {
+        $this->startTime = $startTime;
+
+        return $this;
+    }
+
+    /**
+     * Get startTime
+     *
+     * @return \DateTime
+     */
+    public function getStartTime()
     {
         return $this->startTime;
     }
 
-    public function setStartTime(datetime $startTime) : void
-    {
-        $this->startTime = $startTime;
-    }
-
-    public function getEndTime() : datetime
-    {
-        return $this->endTime;
-    }
-
-    public function setEndTime(datetime $endTime) : void
+    /**
+     * Set endTime
+     *
+     * @param \DateTime $endTime
+     *
+     * @return Meetup
+     */
+    public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    /**
+     * Get endTime
+     *
+     * @return \DateTime
+     */
+    public function getEndTime()
+    {
+        return $this->endTime;
     }
 }
 

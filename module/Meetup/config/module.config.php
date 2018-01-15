@@ -7,6 +7,7 @@
 
 namespace Meetup;
 
+use Meetup\Form\MeetupForm;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Meetup\Controller;
@@ -16,7 +17,7 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 return [
     'router' => [
         'routes' => [
-            'meetup' => [
+            'meetups' => [
                 'type'    => Segment::class,
                 'options' => [
                     'route'    => '/meetups',
@@ -48,11 +49,15 @@ return [
                     'delete' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => '/delete',
+                            'route'    => '/delete[/:id]',
                             'defaults' => [
                                 'action'     => 'delete',
                             ],
+                            'constraints' => [
+                                'id' => '\d+'
+                            ]
                         ],
+
                     ],
                 ],
             ],
@@ -66,7 +71,7 @@ return [
 
     'service_manager' => [
         'factories' => [
-            //FilmForm::class => InvokableFactory::class,
+            MeetupForm::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
@@ -75,7 +80,6 @@ return [
             'meetup/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'meetup/index/add' => __DIR__ . '/../view/application/index/add.phtml',
             'meetup/index/update' => __DIR__ . '/../view/application/index/update.phtml',
-            'meetup/index/delete' => __DIR__ . '/../view/application/index/delete.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

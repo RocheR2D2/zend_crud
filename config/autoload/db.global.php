@@ -9,7 +9,7 @@ return [
             'orm_default' => [
                 'driverClass' => Driver::class,
                 'params' => [
-                    'host'     => $_ENV['SKEL_DB_HOST'] ?? 'localhost',
+                    'host'     => $_ENV['SKEL_DB_HOST'] ?? '127.0.0.1',
                     'port'     => $_ENV['SKEL_DB_PORT'] ?? '3306',
                     'user'     => $_ENV['SKEL_DB_USER'] ?? 'root',
                     'password' => $_ENV['SKEL_DB_PASS'] ?? 'root',
