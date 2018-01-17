@@ -9,6 +9,7 @@ use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Validator\StringLength;
 
 
+
 class MeetupForm extends Form implements InputFilterProviderInterface
 {
 
@@ -87,17 +88,7 @@ class MeetupForm extends Form implements InputFilterProviderInterface
                 ],
             ],
 
-            'startTime' => [
 
-            ],
-
-            'endTime' => [
-                'validators' => [
-                    [
-                        'endTime' > 'starTime',
-                    ],
-                ],
-            ],
         ];
     }
 }
