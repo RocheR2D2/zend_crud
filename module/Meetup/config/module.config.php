@@ -28,6 +28,18 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
+                    'detail' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/detail[/:id]',
+                            'defaults' => [
+                                'action'     => 'detail',
+                            ],
+                            'constraints' => [
+                                'id' => '\d+'
+                            ]
+                        ],
+                    ],
                     'add' => [
                         'type' => Segment::class,
                         'options' => [
@@ -40,10 +52,13 @@ return [
                     'update' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => '/update',
+                            'route'    => '/update[/:id]',
                             'defaults' => [
                                 'action'     => 'update',
                             ],
+                            'constraints' => [
+                                'id' => '\d+'
+                            ]
                         ],
                     ],
                     'delete' => [
@@ -80,6 +95,8 @@ return [
             'meetup/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'meetup/index/add' => __DIR__ . '/../view/application/index/add.phtml',
             'meetup/index/update' => __DIR__ . '/../view/application/index/update.phtml',
+            'meetup/index/detail' => __DIR__ . '/../view/application/index/detail.phtml',
+
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

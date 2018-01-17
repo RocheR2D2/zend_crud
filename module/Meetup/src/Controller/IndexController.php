@@ -36,15 +36,27 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-
+        $form = $this->meetupForm;
         return new ViewModel([
             'meetups' => $this->meetupRepository->findAll(),
+            'form' => $form,
+        ]);
+    }
+
+    public function detailAction()
+    {
+        $id = $this->params()->fromRoute('id', '-1');
+        $meetup = $this->meetupRepository->find($id);
+
+        return new ViewModel([
+            'meetup' => $meetup,
         ]);
     }
 
     public function addAction()
     {
         $form = $this->meetupForm;
+      
         /* @var $request Request */
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -69,8 +81,39 @@ class IndexController extends AbstractActionController
     public function updateAction()
     {
 
+        $id = $this->params()->fromRoute('id', '-1');
+        $meetup = $this->meetupRepository->find($id);/* @var $meetup \Meetup\Entity\Meetup */
 
-        return new ViewModel();
+        $form = $this->meetupForm;
+        /* @var $request Request */
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+
+                $newmeetup = $this->meetupRepository->updateMeetup(
+                    $meetup,
+                    $form->getData()['title'],
+                    $form->getData()['description'],
+                    date_create_from_format('Y-m-d', $form->getData()['startTime']),
+                    date_create_from_format('Y-m-d', $form->getData()['endTime'])
+                );
+
+
+                $this->meetupRepository->update($newmeetup);
+
+                return $this->redirect()->toRoute('meetups');
+
+            }
+        }
+        $form->prepare();
+
+
+        return new ViewModel([
+            'meetup' => $meetup,
+            'form' => $form,
+        ]);
     }
 
     public function deleteAction()
@@ -78,6 +121,7 @@ class IndexController extends AbstractActionController
 
         $id = $this->params()->fromRoute('id', '-1');
         $meetup = $this->meetupRepository->find($id);
+
 
         $this->meetupRepository->delete($meetup);
 

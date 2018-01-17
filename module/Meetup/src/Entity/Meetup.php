@@ -46,16 +46,13 @@ class Meetup
     private $endTime;
 
 
-    
-    public function __construct(string $title, string $description = '', DateTime $startTime, DateTime $endTime)
-    {
 
+    public function __construct(string $title = '', string $description = '', DateTime $startTime, DateTime $endTime)
+    {
             $this->title = $title;
             $this->description = $description;
             $this->startTime = $startTime;
             $this->endTime = $endTime;
-
-        
     }
     /**
      * Get id
@@ -68,6 +65,8 @@ class Meetup
     }
 
     /**
+     * Get title
+     *
      * @return string
      */
     public function getTitle() : string
@@ -75,20 +74,46 @@ class Meetup
         return $this->title;
     }
 
-    public function setTitle(string $title) : void
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setTitle(string $title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
+    /**
+     * Get description
+     *
+     * @return string
+     */
     public function getDescription() : string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description) : void
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return void
+     */
+
+    public function setDescription(string $description)
     {
         $this->description = $description;
+
+        return $this;
     }
+
+
 
     /**
      * Set startTime

@@ -1,1 +1,37 @@
 <h1>Update Meetup</h1>
+
+<?php
+$form = $this->form; /* @var $form \Zend\Form\Form */
+$meetup = $this->meetup;/* @var $meetup \Meetup\Entity\Meetup */
+
+$title = $meetup->getTitle();
+$description = $meetup->getDescription();
+$startTime = $meetup->getStartTime()->format('Y-m-d');;
+$endTime = $meetup->getEndTime()->format('Y-m-d');;
+?>
+
+
+
+
+<?= $this->form()->openTag($form); ?>
+<br/>
+<div class="form-group">
+    <label for="title">Title</label><br />
+    <?= $this->formRow($form->get('title')->setValue($title)) ?>
+</div>
+<div class="form-group">
+    <label for="description">Description</label><br />
+    <?= $this->formRow($form->get('description')->setValue($description)) ?>
+</div>
+<div class="form-group">
+    <label for="startTime">Start Time</label><br />
+    <?= $this->formRow($form->get('startTime')->setValue($startTime)) ?>
+</div>
+<div class="form-group">
+    <label for="endTime">End Time</label>
+    <?= $this->formRow($form->get('endTime')->setValue($endTime)) ?>
+</div>
+<?= $this->formInput($form->get('submit')->setAttribute('value','Update')->setAttribute('class','btn btn-success')) ?>
+<br/>
+<?= $this->form()->closeTag($form); ?>
+

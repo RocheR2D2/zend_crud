@@ -1,0 +1,35 @@
+
+
+<?php
+$meetup = $this->meetup;/* @var $meetup \Meetup\Entity\Meetup */
+
+$title = $meetup->getTitle();
+$description = $meetup->getDescription();
+$startTime = $meetup->getStartTime()->format('Y-m-d');;
+$endTime = $meetup->getEndTime()->format('Y-m-d');;
+?>
+
+<div class="panel panel-success">
+    <div class="panel-heading"><?= $title?></div>
+    <div class="panel-body">
+        <table class="table">
+            <br>
+            <tr>
+                <th>Description: </th><td><?= $description ?></td>
+            </tr>
+            <tr>
+                <th>Start Time: </th><td><?= $startTime ?></td>
+            </tr>
+            <tr>
+                <th>End Time: </th><td><?= $endTime ?></td>
+            </tr>
+        </table>
+        <a href="<?= $this->url('meetups') ?>" type="button" class="btn btn-success"> Back </a>
+    </div>
+
+</div>
+
+
+
+
+
