@@ -56,7 +56,7 @@ class IndexController extends AbstractActionController
     public function addAction()
     {
         $form = $this->meetupForm;
-      
+
         /* @var $request Request */
         $request = $this->getRequest();
         if ($request->isPost()) {

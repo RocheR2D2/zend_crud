@@ -69,8 +69,8 @@ class MeetupForm extends Form implements InputFilterProviderInterface
                     [
                         'name' => StringLength::class,
                         'options' => [
-                            'min' => 4,
-                            'max' => 8,
+                            'min' => 8,
+                            'max' => 12,
                         ],
                     ],
                 ],
@@ -88,25 +88,13 @@ class MeetupForm extends Form implements InputFilterProviderInterface
             ],
 
             'startTime' => [
-                'validators' => [
-                    [
-                        'name' => StringLength::class,
-                        'options' => [
-                            'min' => 4,
-                            'max' => 8,
-                        ],
-                    ],
-                ],
+
             ],
 
             'endTime' => [
                 'validators' => [
                     [
-                        'name' => StringLength::class,
-                        'options' => [
-                            'min' => 4,
-                            'max' => 8,
-                        ],
+                        'endTime' > 'starTime',
                     ],
                 ],
             ],
