@@ -10,9 +10,9 @@ use Zend\Validator\StringLength;
 
 
 
-class MeetupForm extends Form implements InputFilterProviderInterface
+class MeetupForm extends Form
 {
-
+    //implements InputFilterProviderInterface
     /**
      * Should return an array specification compatible with
      * {@link Zend\InputFilter\Factory::createInputFilter()}.
@@ -61,7 +61,7 @@ class MeetupForm extends Form implements InputFilterProviderInterface
 
         ]);
     }
-
+    /*
     public function getInputFilterSpecification()
     {
         return [
@@ -91,6 +91,7 @@ class MeetupForm extends Form implements InputFilterProviderInterface
 
         ];
     }
+    */
 }
 
 ?>

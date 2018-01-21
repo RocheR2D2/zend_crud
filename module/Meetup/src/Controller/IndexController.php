@@ -10,6 +10,7 @@ namespace Meetup\Controller;
 
 use Meetup\Entity\Meetup;
 use Meetup\Form\MeetupForm;
+use Meetup\InputFilter\FormFilter;
 use Meetup\Repository\MeetupRepository;
 use Zend\Http\PhpEnvironment\Request;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -60,6 +61,7 @@ class IndexController extends AbstractActionController
         /* @var $request Request */
         $request = $this->getRequest();
         if ($request->isPost()) {
+            $form->setInputFilter(new FormFilter());
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $meetup = $this->meetupRepository->createMeetupFromNameDescription(
